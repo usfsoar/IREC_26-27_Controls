@@ -1,5 +1,10 @@
 import rocketpy
 
+#multiprocess, early filtering (stability), post filter (apogee between 10k and 12k, stab margin between 1 and 1.75)
+#rocketpy sims are not useful to make solution space. rpy monete carlo is meant to handle stochastic variables and see how a single design behaves
+#custom sim gives total deterministic control, systematically go through each precise strucutureal changes. my script can enforce enigneering boundaries on the fly
+#need to look into algorithms instead of brute force like genetic algorithms (deap, pygad), latin hypercube sampling, bayesian optimization
+
 ## Motor Sources
 # https://docs.rocketpy.org/en/latest/user/motors/solidmotor.html
 # https://www.rocketmotorparts.com/9810240_EMK__High_Power_Experimental_Motor_Kit/p1577809_14937531.aspx
@@ -48,7 +53,6 @@ M_motor = rocketpy.SolidMotor(
   throat_radius=.734/2/39.37,
   coordinate_system_orientation="nozzle_to_combustion_chamber",
 )
-
 
 #ROCKET BUILD
 
