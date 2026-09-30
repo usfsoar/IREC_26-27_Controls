@@ -44,9 +44,9 @@ M_motor = rocketpy.SolidMotor(
   grain_initial_height=6/2/39.37,
   grain_separation= 0,
 
-  #these two are default, i have no idea
-  grains_center_of_mass_position=0.385,
-  center_of_dry_mass_position=0.366,
+  #these two i have no idea
+  grains_center_of_mass_position=6/2/39.37 /2,
+  center_of_dry_mass_position=length/2,
 
   nozzle_position=0,
   burn_time=6.2,
@@ -88,7 +88,7 @@ nika.add_tail(
 main = nika.add_parachute(
     name="Main",
     cd_s=10.0,
-    trigger=800,
+    trigger=1000,
     sampling_rate=105,
     lag=1.5,
     noise=(0, 8.3, 0.5),
