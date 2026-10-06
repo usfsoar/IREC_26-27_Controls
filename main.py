@@ -46,7 +46,7 @@ M_motor = rocketpy.SolidMotor(
 
   #these two i have no idea
   grains_center_of_mass_position=6/2/39.37 /2,
-  center_of_dry_mass_position=length/2,
+  center_of_dry_mass_position=0.732/2,
 
   nozzle_position=0,
   burn_time=6.2,
