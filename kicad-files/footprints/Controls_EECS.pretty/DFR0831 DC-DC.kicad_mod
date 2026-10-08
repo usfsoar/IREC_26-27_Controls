@@ -1,0 +1,113 @@
+(footprint "DFR0831 DC-DC"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 22 -7 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "c703a7e7-860b-4895-8cb7-69e5a920e239")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "DFR0831 DC-DC"
+		(at 22 -5.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "dff0eb33-69de-42e0-ae54-49ad5fe00af4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "966d09bb-30e1-4f84-ba3e-a3efab91217b")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5f46e644-1ff1-4931-b39a-8454ff88abab")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_rect
+		(start 0 0)
+		(end 43.536 20.269)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "e794ce64-bb3a-49db-be76-645e0777039e")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 19.5 -3 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "d0124665-2c6e-47ea-906c-c0bb9a96447d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" thru_hole circle
+		(at 2.64695 2.64695)
+		(size 1.905 1.905)
+		(drill 1.27)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b9698501-95b2-4884-9509-122c3de870f7")
+	)
+	(pad "1" thru_hole circle
+		(at 2.64695 17.62205)
+		(size 1.905 1.905)
+		(drill 1.27)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "5d66d1c4-8a49-4a46-a0a9-62978dbaee57")
+	)
+	(pad "1" thru_hole circle
+		(at 27.833041 2.64695)
+		(size 1.905 1.905)
+		(drill 1.27)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "bc37e519-3fa8-4a31-a2fd-41fc9b9e3149")
+	)
+	(pad "1" thru_hole circle
+		(at 27.833041 17.62205)
+		(size 1.905 1.905)
+		(drill 1.27)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e942826c-526f-446f-94a2-add885769f1f")
+	)
+	(embedded_fonts no)
+)
