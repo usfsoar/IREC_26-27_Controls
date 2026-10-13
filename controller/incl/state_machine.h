@@ -23,7 +23,7 @@ enum RocketState
 // Shorter name for the RocketState type.
 typedef RocketState State;
 
-constexpr char* stateStrings[NUM_STATES] = 
+constexpr const char* stateStrings[NUM_STATES] = 
 {
     "Standby",
     "Launch",
