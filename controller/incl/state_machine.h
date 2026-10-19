@@ -34,18 +34,21 @@ constexpr const char* stateStrings[NUM_STATES] =
 // Stores the latest rocket measurements.
 struct RocketData
 {
-    double altitude;       // Height above the ground.
-    double velocity;       // Rate of change of altitude.
-    double acceleration;   // Rate of change of velocity.
+    double altitude;
+    double velocity;
+    double acceleration;
 };
 
-class StateTracker
+class StateMachine
 {
 public:
-    // Initial state is standby.
-    State currentState = standby;
+    // Start the state machine in the specified state.
+    explicit StateMachine(State initialState = standby)
+        : currentState(initialState), consecutiveReadings(0)
+    {
+    }
 
-    // Number of consecutive readings meeting a transition condition.
+    State currentState;
     int consecutiveReadings = 0;
 
     // Process a new reading and return the current state.

@@ -10,53 +10,68 @@ namespace StateMachine
 // Number of consecutive readings required to confirm a transition.
 constexpr int REQUIRED_READINGS = 3;
 
-// TEMPORARY thresholds.
-// These must be validated against the actual flight and sensor design.
-constexpr double ALTITUDE_THRESHOLD = 1.0;
-constexpr double VELOCITY_THRESHOLD = 0.5;
-constexpr double ACCELERATION_THRESHOLD = 0.0;
+//TEMPORARY THRESHOLDS FOR TESTING
+// Standby -> Launch thresholds
+constexpr double LAUNCH_ALTITUDE_THRESHOLD = 1.0;
+constexpr double LAUNCH_VELOCITY_THRESHOLD = 0.5;
+constexpr double LAUNCH_ACCELERATION_THRESHOLD = 0.0;
+
+// Launch -> Post-Burnout thresholds
+constexpr double BURNOUT_ALTITUDE_THRESHOLD = 1.0;
+constexpr double BURNOUT_VELOCITY_THRESHOLD = 0.5;
+constexpr double BURNOUT_ACCELERATION_THRESHOLD = 0.0;
+
+// Post-Burnout -> Post-Apogee thresholds
+constexpr double APOGEE_ALTITUDE_THRESHOLD = 1.0;
+constexpr double APOGEE_VELOCITY_THRESHOLD = 0.5;
+constexpr double APOGEE_ACCELERATION_THRESHOLD = 0.0;
 
 
 // Process a new rocket measurement and update the state if needed.
-State StateTracker::update(const RocketData& rocket)
+State StateMachine::update(const RocketData& rocket)
 {
     bool transitionCondition = false;
     State nextState = currentState;
 
-    // Determine the condition required to leave the current state.
-    switch (currentState)
-    {
-        case standby:
-            // Require altitude and upward velocity to exceed thresholds.
-            transitionCondition =
-                rocket.altitude > ALTITUDE_THRESHOLD &&
-                rocket.velocity > VELOCITY_THRESHOLD;
+// Determine the condition required to leave the current state.
+switch (currentState)
+{
+    case standby:
+        // Standby -> Launch
+        transitionCondition =
+            rocket.altitude > LAUNCH_ALTITUDE_THRESHOLD &&
+            rocket.velocity > LAUNCH_VELOCITY_THRESHOLD &&
+            rocket.acceleration > LAUNCH_ACCELERATION_THRESHOLD;
 
-            nextState = launch;
-            break;
+        nextState = launch;
+        break;
 
-        case launch:
-            // Preliminary burnout condition.
-            transitionCondition =
-                rocket.acceleration <= ACCELERATION_THRESHOLD;
+    case launch:
+        // Launch -> Post-Burnout
+        transitionCondition =
+            rocket.altitude > BURNOUT_ALTITUDE_THRESHOLD &&
+            rocket.velocity > BURNOUT_VELOCITY_THRESHOLD &&
+            rocket.acceleration <= BURNOUT_ACCELERATION_THRESHOLD;
 
-            nextState = postBurnout;
-            break;
+        nextState = postBurnout;
+        break;
 
-        case postBurnout:
-            // Negative velocity indicates descent.
-            transitionCondition =
-                rocket.velocity < -VELOCITY_THRESHOLD;
+    case postBurnout:
+        // Post-Burnout -> Post-Apogee
+        transitionCondition =
+            rocket.altitude > APOGEE_ALTITUDE_THRESHOLD &&
+            rocket.velocity < APOGEE_VELOCITY_THRESHOLD &&
+            rocket.acceleration <= APOGEE_ACCELERATION_THRESHOLD;
 
-            nextState = postApogee;
-            break;
+        nextState = postApogee;
+        break;
 
-        case postApogee:
-            return currentState;
+    case postApogee:
+        return currentState;
 
-        default:
-            return currentState;
-    }
+    default:
+        return currentState;
+}
 
     // Count readings that continuously satisfy the condition.
     if (transitionCondition)
@@ -89,7 +104,7 @@ int StateMachineThread::init()
 
 int StateMachineThread::loop(int initStatus)
 {
-    // TODO: Read sensor data and pass it to StateTracker::update().
+    // TODO: Read sensor data and pass it to StateMachine::update().
     (void)initStatus;
 
     return 0;
