@@ -753,7 +753,7 @@
         "uuid": "5dd72d53-dc48-4296-8d46-03ae548cca02"
       }
     ],
-    "used_designators": "U1-6,RRC3+_Altimeter1-2,1,J1-2,BIGTREEETECH_TMC5160T1,MIKROE\\-1-3,IC1-4,DFR1-2,#PWR1-36,Adafruit_PA1010D_MINI_GPS1,Motor1,D1-2,F1",
+    "used_designators": "U1-6,RRC3+_Altimeter1-2,1,J1-2,BIGTREEETECH_TMC5160T1,MIKROE\\-1-3,IC1-4,DFR1-2,#PWR1-36,#PWR40-48,Adafruit_PA1010D_MINI_GPS1,Motor1,D1-2,F1",
     "variants": []
   },
   "sheets": [
